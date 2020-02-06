@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white h-100">
-    <div id="sidebar-toggle">
-        <i class="fa fa-bars"></i>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader">
+{% load static %}
+<link href="{% static 'css/header.css' %}" rel="stylesheet">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white h-100 p-0">
+    <button class="navbar-toggler ml-3" type="button" data-toggle="collapse" data-target="#navbarHeader">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarHeader">
+    <div class="collapse navbar-collapse bg-white px-3" id="navbarHeader">
         {# 左边的菜单 #}
-        <ul class="navbar-nav mr-5">
+        <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
             </li>

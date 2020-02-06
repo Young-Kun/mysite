@@ -1,4 +1,11 @@
-$('#sidebar-toggle').click(function () {
-    $('#sidebar-menu, #brand').toggleClass('collapsed-sidebar');
-    $('#sidebar-toggle').toggleClass('rotate');
+$('.sidebar-menu-item').click(function () {
+    $('.sidebar-group-title').removeClass('active');
+    $('.sidebar-menu-item').removeClass('active');
+    $(this).addClass('active');
+});
+
+$('.sidebar-group-title').click(function () {
+    $('.sidebar-group-title').removeClass('active');
+    $('.sidebar-menu-item').removeClass('active');
+    $(this).addClass('active');
 });

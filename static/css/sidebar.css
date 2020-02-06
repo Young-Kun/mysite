@@ -1,0 +1,74 @@
+#brand {
+    display: flex;
+    padding: 0 12px;
+    align-items: center;
+    border-bottom: 1px solid #101117;
+    height: 64px;
+    flex: none;
+    color: #fff;
+    font-size: 1.15rem;
+}
+
+#brand:hover {
+    color: #fff;
+}
+
+#brand span {
+    overflow: hidden;
+}
+
+#sidebar-menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sidebar-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebar-group-title, .sidebar-menu-item {
+    display: block;
+    padding: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar-group span {
+    padding-left: 0.5rem;
+    display: inline-block;
+    overflow: hidden;
+    width: 8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width .2s ease;
+}
+
+.sidebar-menu-item span {
+    padding-left: 1.75rem;
+}
+
+.sidebar-group-title:hover, .sidebar-menu-item:hover {
+    background: #101117;
+    color: #fff;
+}
+
+.sidebar-group-title[aria-expanded='true'] .title-arrow {
+    transform: rotate(180deg);
+    transition: all .2s ease;
+}
+
+.sidebar-group-title[aria-expanded='false'] .title-arrow {
+    transition: all .2s ease;
+}
+
+.sidebar-menu-item.active, .sidebar-group-title.active {
+    color: #fff;
+    background: #101117!important;
+}
+
+.sidebar-group-title[aria-expanded='false'] {
+    color: rgba(255, 255, 255, 0.7);
+    background: #1d1e23!important;
+}
