@@ -44,9 +44,9 @@ a, a:hover {
     padding: 12px 24px;
 }
 
-.brand {
+#brand {
     display: flex;
-    padding: 0 24px;
+    padding: 0 12px;
     align-items: center;
     border-bottom: 1px solid #101117;
     height: 64px;
@@ -55,8 +55,12 @@ a, a:hover {
     font-size: 1.15rem;
 }
 
-.brand:hover {
+#brand:hover {
     color: #fff;
+}
+
+#brand span {
+    overflow: hidden;
 }
 
 #sidebar-menu {
@@ -64,20 +68,24 @@ a, a:hover {
     overflow-x: hidden;
 }
 
+#sidebar-menu::-webkit-scrollbar {
+    display: none;
+}
+
 #sidebar-menu ul {
     margin: 0;
     padding: 0;
 }
 
-.sidebar-group-title {
+.sidebar-group-title, .sidebar-item {
     display: block;
-    padding: 12px 24px;
+    padding: 12px;
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
     font-size: 14px;
 }
 
-.sidebar-group-title span {
+.sidebar-group-title span, .sidebar-item span {
     padding-left: 0.5rem;
     display: inline-block;
     overflow: hidden;
@@ -85,15 +93,54 @@ a, a:hover {
     text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: bottom;
-    transition: all .2s ease;
+    transition: width .2s ease;
 }
 
-#sidebar-menu li {
-    list-style: none;
-    padding: 0;
+.sidebar-item span {
+    padding-left: 1.75rem;
 }
 
 .sidebar-group-title:hover, .sidebar-item:hover {
     background: #101117;
     color: #fff;
+}
+
+#sidebar-toggle {
+    font-size: x-large;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+#sidebar-toggle:hover {
+    transform: scale(1.1);
+    transition: all .2s ease;
+}
+
+#sidebar-toggle.rotate {
+    transform: rotate(90deg);
+    transition: all .2s ease;
+}
+
+.collapsed-sidebar span {
+    width: 0;
+    transition: width .2s ease-in-out;
+}
+
+.collapsed-sidebar .title-icon {
+    font-size: large;
+    transform: translateX(14px);
+    transition: all .2s ease;
+}
+
+.collapsed-sidebar .title-arrow {
+    display: none;
+}
+
+.sidebar-group-title[aria-expanded='true'] .title-arrow {
+    transform: rotate(180deg);
+    transition: all .2s ease;
+}
+
+.sidebar-group-title[aria-expanded='false'] .title-arrow {
+    transition: all .2s ease;
 }

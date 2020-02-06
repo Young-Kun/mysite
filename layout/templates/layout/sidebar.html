@@ -1,30 +1,30 @@
 {% load static %}
 
-<a href="#" class="brand">
+<a href="#" id="brand">
     <img src="{% static 'images/logo.png' %}" alt="" width="50px" height="50px">
     <span>LOGO</span>
 </a>
 <div class="accordion" id="sidebar-menu">
     <a href="#" class="sidebar-group-title">
-        <i class="fa fa-envelope-open fa-fw"></i>
+        <i class="fa fa-envelope-open fa-fw title-icon"></i>
         <span>非折叠菜单</span>
     </a>
     <div data-toggle="collapse" data-target="#menu-group-1" class="sidebar-group-title">
-        <i class="fa fa-map-marker fa-fw"></i>
-        <span>菜单组1</span>
+        <i class="fa fa-map-marker fa-fw title-icon"></i>
+        <span>菜单组1</span><i class="fa fa-angle-down fa-fw title-arrow"></i>
     </div>
-    <ul id="menu-group-1" class="collapse" data-parent="#sidebar-menu">
-        <li class="sidebar-item"> menu1-1</li>
-        <li class="sidebar-item"> menu1-2</li>
-        <li class="sidebar-item"> menu1-3</li>
-    </ul>
+    <div id="menu-group-1" class="collapse" data-parent="#sidebar-menu">
+        <a class="sidebar-item" href="#"><span>menu1-1</span></a>
+        <a class="sidebar-item" href="#"><span>menu1-2</span></a>
+        <a class="sidebar-item" href="#"><span>menu1-3</span></a>
+    </div>
     <div data-toggle="collapse" data-target="#menu-group-2" class="sidebar-group-title">
-        <i class="fa fa-battery-quarter fa-fw"></i>
-        <span>菜单组2</span>
+        <i class="fa fa-address-book fa-fw title-icon"></i>
+        <span>菜单组2</span><i class="fa fa-angle-down fa-fw title-arrow"></i>
     </div>
-    <ul id="menu-group-2" class="collapse" data-parent="#sidebar-menu">
-        <li class="sidebar-item"> menu2-1</li>
-        <li class="sidebar-item"> menu2-2</li>
-        <li class="sidebar-item"> menu2-3</li>
-    </ul>
+    <div id="menu-group-2" class="collapse" data-parent="#sidebar-menu">
+        <a class="sidebar-item" href="#"><span>menu2-1</span></a>
+        <a class="sidebar-item" href="#"><span>menu2-2</span></a>
+        <a class="sidebar-item" href="#"><span>menu2-3</span></a>
+    </div>
 </div>
