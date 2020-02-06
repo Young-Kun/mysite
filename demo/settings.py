@@ -24,7 +24,7 @@ SECRET_KEY = 'z8u(n1c00b(gf)6_g7&ki(+)#yz^t$(^c3i_zsgl+33yjnz&n%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['youngkun.site']
 
 # Application definition
 
