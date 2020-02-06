@@ -4,6 +4,27 @@
     <img src="{% static 'images/logo.png' %}" alt="" width="50px" height="50px">
     <span>LOGO</span>
 </a>
-<ul class="sidebar-nav">
-
-</ul>
+<div class="accordion" id="sidebar-menu">
+    <a href="#" class="sidebar-group-title">
+        <i class="fa fa-envelope-open fa-fw"></i>
+        <span>非折叠菜单</span>
+    </a>
+    <div data-toggle="collapse" data-target="#menu-group-1" class="sidebar-group-title">
+        <i class="fa fa-map-marker fa-fw"></i>
+        <span>菜单组1</span>
+    </div>
+    <ul id="menu-group-1" class="collapse" data-parent="#sidebar-menu">
+        <li class="sidebar-item"> menu1-1</li>
+        <li class="sidebar-item"> menu1-2</li>
+        <li class="sidebar-item"> menu1-3</li>
+    </ul>
+    <div data-toggle="collapse" data-target="#menu-group-2" class="sidebar-group-title">
+        <i class="fa fa-battery-quarter fa-fw"></i>
+        <span>菜单组2</span>
+    </div>
+    <ul id="menu-group-2" class="collapse" data-parent="#sidebar-menu">
+        <li class="sidebar-item"> menu2-1</li>
+        <li class="sidebar-item"> menu2-2</li>
+        <li class="sidebar-item"> menu2-3</li>
+    </ul>
+</div>

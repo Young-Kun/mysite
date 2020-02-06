@@ -1,3 +1,7 @@
+a, a:hover {
+    text-decoration: none;
+}
+
 .wrapper {
     display: flex;
     width: 100%;
@@ -7,11 +11,11 @@
     position: sticky;
     top: 0;
     left: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    flex: none;
     height: 100vh;
-    min-width: 200px;
-    max-width: 200px;
     background: #1d1e23;
-    overflow-y: auto;
 }
 
 .inside-wrapper {
@@ -45,13 +49,51 @@
     padding: 0 24px;
     align-items: center;
     border-bottom: 1px solid #101117;
-    width: 100%;
     height: 64px;
+    flex: none;
     color: #fff;
     font-size: 1.15rem;
 }
 
 .brand:hover {
-    text-decoration: none;
+    color: #fff;
+}
+
+#sidebar-menu {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#sidebar-menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-group-title {
+    display: block;
+    padding: 12px 24px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.sidebar-group-title span {
+    padding-left: 0.5rem;
+    display: inline-block;
+    overflow: hidden;
+    width: 8rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: all .2s ease;
+}
+
+#sidebar-menu li {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-group-title:hover, .sidebar-item:hover {
+    background: #101117;
     color: #fff;
 }
