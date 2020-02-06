@@ -1,15 +1,14 @@
 #sidebar-toggle {
     font-size: x-large;
-    margin-right: 15px;
+    padding: 0 15px;
     cursor: pointer;
 }
 
-#sidebar-toggle:hover {
-    transform: scale(1.1);
+#sidebar-toggle {
     transition: all .2s ease;
 }
 
 #sidebar-toggle.rotate {
-    transform: rotate(90deg);
+    transform: rotateY(180deg);
     transition: all .2s ease;
 }

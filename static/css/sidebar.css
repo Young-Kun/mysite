@@ -26,14 +26,6 @@
     display: none;
 }
 
-.sidebar-group-title, .sidebar-menu-item {
-    display: block;
-    padding: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    font-size: 14px;
-}
-
 .sidebar-group span {
     padding-left: 0.5rem;
     display: inline-block;
@@ -45,11 +37,19 @@
     transition: width .2s ease;
 }
 
+.sidebar-group-title, .sidebar-menu-item, .sidebar-single-item {
+    display: block;
+    padding: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    font-size: 14px;
+}
+
 .sidebar-menu-item span {
     padding-left: 1.75rem;
 }
 
-.sidebar-group-title:hover, .sidebar-menu-item:hover {
+.sidebar-group-title:hover, .sidebar-menu-item:hover, .sidebar-single-item:hover {
     background: #101117;
     color: #fff;
 }
@@ -63,12 +63,41 @@
     transition: all .2s ease;
 }
 
-.sidebar-menu-item.active, .sidebar-group-title.active {
+.sidebar-group-title.active, .sidebar-single-item.active {
     color: #fff;
-    background: #101117!important;
+    background: #101117;
 }
 
-.sidebar-group-title[aria-expanded='false'] {
-    color: rgba(255, 255, 255, 0.7);
-    background: #1d1e23!important;
+.sidebar-menu-item.active {
+    color: #fff;
+    background: #2d8cf0;
+}
+
+.sidebar-group .title-arrow {
+    overflow: hidden;
+}
+
+.collapsed-sidebar .sidebar-group-title span, #brand.collapsed-sidebar span, .collapsed-sidebar .sidebar-single-item span, .collapsed-sidebar .title-arrow {
+    width: 0;
+    transition: width .2s ease;
+}
+
+.sidebar-group .title-icon {
+    transition: all .2s ease;
+}
+
+.collapsed-sidebar .title-icon {
+    font-size: large;
+    transform: translateX(14px);
+    transition: all .2s ease;
+}
+
+.menu-items {
+    background: #1d1e23;
+}
+
+.collapsed-sidebar .menu-items {
+    position: fixed;
+    left: 76px;
+    margin-top: -45px;
 }
