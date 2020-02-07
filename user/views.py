@@ -14,7 +14,6 @@ def user_login(request):
             user = authenticate(username=cd.get('username'), password=cd.get('password'))
             if user:
                 login(request, user)
-                messages.add_message(request, messages.SUCCESS, '登录成功！')
                 return redirect(next_url)
             else:
                 messages.add_message(request, messages.ERROR, '用户名或密码错误！')
