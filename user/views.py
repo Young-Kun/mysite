@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .form import LoginForm
 from django.contrib import auth, messages
+from django.contrib.auth.models import User
 
 
 def login(request):
@@ -15,7 +16,10 @@ def login(request):
                 auth.login(request, user)
                 return redirect(next_url)
             else:
-                messages.add_message(request, messages.ERROR, '用户名或密码错误！')
+                if User.objects.filter(username=cd.get('username')).exists():
+                    messages.add_message(request, messages.ERROR, '密码错误！')
+                else:
+                    messages.add_message(request, messages.ERROR, '用户名不存在！')
                 return render(request, 'user/login.html', locals())
         else:
             messages.add_message(request, messages.ERROR, '信息有误！')

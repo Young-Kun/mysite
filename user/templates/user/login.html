@@ -1,15 +1,16 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-    <form action="{% url 'user:login' %}?next={{ next_url }}" method="post" class="mx-auto mt-5" style="max-width: 300px">
+    <form action="{% url 'user:login' %}?next={{ next_url }}" method="post" class="mx-auto mt-5"
+          style="max-width: 300px">
         {% csrf_token %}
         <div class="text-center mb-5">
-            <h1>欢迎登录</h1>
+            <h2>欢迎登录</h2>
         </div>
         {# 提示消息 #}
         {% if messages %}
             {% for message in messages %}
-                <div class="alert
+                <div class="alert alert-dismissible fade show
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                 alert-danger
                 {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
@@ -17,7 +18,11 @@
                 {% else %}
                 alert-warning
                 {% endif %}"
-                >{{ message }}</div>
+                >{{ message }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                    </button>
+                </div>
             {% endfor %}
         {% endif %}
         {# 表单主体 #}
