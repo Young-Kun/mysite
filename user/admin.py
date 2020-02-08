@@ -4,5 +4,5 @@ from .models import UserProfile
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'gender', 'mobile']
+    list_display = ['user', 'gender', 'mobile', 'birth']
     list_editable = ['mobile']

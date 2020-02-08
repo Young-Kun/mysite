@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load filters %}
 
+{% block title %}登录{% endblock %}
 {% block content %}
     <form action="{% url 'user:login' %}?next={{ next_url }}" method="post" class="mx-auto mt-5"
           style="max-width: 350px">

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from .form import LoginForm, RegistrationForm
+from .form import LoginForm, RegistrationForm, UserForm, UserProfileForm
+from .models import UserProfile
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -50,3 +52,11 @@ def register(request):
             return render(request, 'user/register.html', locals())
     register_form = RegistrationForm()
     return render(request, 'user/register.html', locals())
+
+
+@login_required
+def profile(request):
+    userprofile = UserProfile.objects.get(user=request.user) if \
+        hasattr(request.user, 'userprofile') \
+        else UserProfile.objects.create(user=request.user)
+    return render(request, 'user/profile.html', locals())

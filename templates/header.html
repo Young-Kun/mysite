@@ -5,12 +5,12 @@
     <div id="sidebar-toggle">
         <i class="fa fa-outdent fa-fw"></i>
     </div>
-    <button class="navbar-toggler ml-3" type="button" data-toggle="collapse" data-target="#navbarHeader">
+    <button class="navbar-toggler ml-3 mr-auto" type="button" data-toggle="collapse" data-target="#navbarHeader">
         <span class="navbar-toggler-icon"></span>
     </button>
+    {# 左边的菜单 #}
     <div class="collapse navbar-collapse bg-white px-3" id="navbarHeader">
-        {# 左边的菜单 #}
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-3">
             <li class="nav-item">
                 <a class="nav-link" href="#">链接1</a>
             </li>
@@ -18,7 +18,7 @@
                 <a class="nav-link" href="#">链接2</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
                     下拉菜单
                 </a>
                 <div class="dropdown-menu">
@@ -29,17 +29,22 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline mx-4">
+        <form class="form-inline">
             <input class="form-control mr-2" type="search" placeholder="Search"/>
         </form>
-        {# 右边的菜单 #}
-        <ul class="navbar-nav ml-auto">
+    </div>
+    {# 右边的菜单 #}
+    <div class="bg-white px-3">
+        <ul class="navbar-nav ml-auto flex-row flex-nowrap">
             {% if user.is_authenticated %}
-                <li>
-                    <a class="nav-link" href="#">{{ user.username }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user:logout' %}?next={{ request.path }}">退出</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
+                        {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{% url 'user:profile' %}">个人资料</a>
+                        <a class="dropdown-item" href="{% url 'user:logout' %}?next={{ request.path }}">退出</a>
+                    </div>
                 </li>
             {% else %}
                 <li class="nav-item">
@@ -49,7 +54,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <span class="navbar-text">▪</span>
+                    <span class="navbar-text">|</span>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ login_button_disabled }}"
@@ -60,5 +65,4 @@
             {% endif %}
         </ul>
     </div>
-
 </nav>
