@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .form import LoginForm, RegistrationForm, UserForm, UserProfileForm
+from .form import LoginForm, RegistrationForm
 from .models import UserProfile
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 def login(request):
     next_url = request.GET.get('next', '/blog/index')
-    login_button_disabled = 'disabled'
+    register_login_button_disabled = 'disabled'
     if request.method == 'POST':
         login_form = LoginForm(request.POST)
         if login_form.is_valid():
@@ -38,7 +38,7 @@ def logout(request):
 
 def register(request):
     next_url = request.GET.get('next', '/blog/index')
-    register_button_disabled = 'disabled'
+    register_login_button_disabled = 'disabled'
     if request.method == 'POST':
         register_form = RegistrationForm(request.POST)
         if register_form.is_valid():
@@ -60,3 +60,5 @@ def profile(request):
         hasattr(request.user, 'userprofile') \
         else UserProfile.objects.create(user=request.user)
     return render(request, 'user/profile.html', locals())
+
+

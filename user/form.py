@@ -37,7 +37,7 @@ class UserProfileForm(forms.ModelForm):
         fields = '__all__'
 
 
-class UserForm(forms.ModelForm):
+class ChangePasswordForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['username', 'password']
