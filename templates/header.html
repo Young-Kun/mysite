@@ -40,7 +40,13 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown">
                         <img src="{% static 'images/logo.png' %}" alt="" width="36px" height="36px">
-                        <span>{{ user.username }}</span>
+                        <span>
+                            {% if user.first_name %}
+                                {{ user.first_name }}
+                            {% else %}
+                                {{ user.username }}
+                            {% endif %}
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{% url 'user:profile' %}">个人资料</a>

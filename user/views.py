@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .form import LoginForm, RegistrationForm
+from .form import LoginForm, RegistrationForm, UserForm, UserProfileForm
 from .models import UserProfile
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
@@ -56,9 +56,38 @@ def register(request):
 
 @login_required
 def profile(request):
-    userprofile = UserProfile.objects.get(user=request.user) if \
+    user_profile = UserProfile.objects.get(user=request.user) if \
         hasattr(request.user, 'userprofile') \
         else UserProfile.objects.create(user=request.user)
     return render(request, 'user/profile.html', locals())
 
 
+@login_required
+def edit_profile(request):
+    user_profile = UserProfile.objects.get(user=request.user) if \
+        hasattr(request.user, 'userprofile') \
+        else UserProfile.objects.create(user=request.user)
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        user_profile_form = UserProfileForm(request.POST)
+        if user_form.is_valid() * user_profile_form.is_valid():
+            user_cd = user_form.cleaned_data
+            user_profile_cd = user_profile_form.cleaned_data
+            request.user.email = user_cd.get('email')
+            request.user.first_name = user_cd.get('first_name')
+            user_profile.tags = user_profile_cd.get('tags')
+            user_profile.gender = user_profile_cd.get('gender')
+            user_profile.birth = user_profile_cd.get('birth')
+            user_profile.mobile = user_profile_cd.get('mobile')
+            user_profile.address = user_profile_cd.get('address')
+            request.user.save()
+            user_profile.save()
+            messages.add_message(request, messages.SUCCESS, '修改成功！')
+            return redirect('user:profile')
+        else:
+            messages.add_message(request, messages.ERROR, user_form.errors)
+            messages.add_message(request, messages.ERROR, user_profile_form.errors)
+            return render(request, 'user/edit_profile.html', locals())
+    user_form = UserForm(instance=request.user)
+    user_profile_form = UserProfileForm(instance=user_profile)
+    return render(request, 'user/edit_profile.html', locals())

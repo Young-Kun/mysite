@@ -31,13 +31,25 @@ class RegistrationForm(forms.ModelForm):
         return cd.get('password2')
 
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email', 'first_name']
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={'class': 'form-control', 'required': False}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control', 'required': False}),
+        }
+
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = '__all__'
-
-
-class ChangePasswordForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ['username', 'password']
+        fields = ['tags', 'gender', 'birth', 'mobile', 'address']
+        widgets = {
+            'tags': forms.Textarea(attrs={'class': 'form-control', 'required': False, 'style': "height: 4rem"}),
+            'gender': forms.Select(attrs={'class': 'form-control'}),
+            'birth': forms.DateInput(attrs={'class': 'form-control', 'required': False, 'placeholder': 'YYYY/mm/dd'}),
+            'mobile': forms.TextInput(attrs={'class': 'form-control', 'required': False}),
+            'address': forms.Textarea(attrs={'class': 'form-control', 'required': False, 'style': "height: 4rem"}),
+        }

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}用户信息{% endblock %}
+{% block content %}
+    <form action="{% url 'user:edit_profile' %}" method='post' class="bg-white w-50 mx-auto mt-5 p-3 shadow-sm">
+        {% csrf_token %}
+        <h1>{{ user.username }}</h1>
+        <div>{{ user_profile_form.tags|default:'这家伙很懒，什么都没写' }}</div>
+        <hr/>
+        {% include 'messages.html' %}
+        <div class="form-group row">
+            <label class="col-3 text-right col-form-label"
+                   for="{{ user_form.first_name.id_for_label }}">
+                <strong>昵称：</strong>
+            </label>
+            <div class="col-8">{{ user_form.first_name }}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-3 text-right col-form-label"
+                   for="{{ user_form.email.id_for_label }}">
+                邮箱：
+            </label>
+            <div class="col-8">{{ user_form.email }}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-3 text-right col-form-label"
+                   for="{{ user_profile_form.gender.id_for_label }}">
+                性别：
+            </label>
+            <div class="col-8">{{ user_profile_form.gender }}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-3 text-right col-form-label"
+                   for="{{ user_profile_form.birth.id_for_label }}">
+                出生日期：
+            </label>
+            <div class="col-8">{{ user_profile_form.birth }}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-3 text-right col-form-label"
+                   for="{{ user_profile_form.mobile.id_for_label }}">
+                手机号码：
+            </label>
+            <div class="col-8">{{ user_profile_form.mobile }}</div>
+        </div>
+        <div class="form-group row">
+            <label class="col-3 text-right col-form-label"
+                   for="{{ user_profile_form.address.id_for_label }}">
+                地址：
+            </label>
+            <div class="col-8">{{ user_profile_form.address }}</div>
+        </div>
+        <hr/>
+        <div class="d-flex">
+            <a href="{% url 'user:profile' %}" class="ml-auto">
+                <button class="btn btn-link" type="button">取消</button>
+            </a>
+            <input type="submit" value="保存" class="btn btn-link">
+        </div>
+    </form>
+
+{% endblock %}

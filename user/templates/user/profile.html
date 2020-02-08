@@ -2,20 +2,30 @@
 
 {% block title %}用户信息{% endblock %}
 {% block content %}
-    <div class="card mx-auto mt-5 w-50">
-        <div class="card-body">
-            <h1 class="card-title">{{ userprofile.user.username }}</h1>
-            <p class="card-text"> {{ userprofile.tags|default_if_none:'这个人很懒，什么都没留下' }}</p>
+    <div class="bg-white w-50 mx-auto mt-5 p-3 shadow-sm">
+        <h1>{{ user.username }}</h1>
+        <div><pre>{{ user_profile.tags|default:'这家伙很懒，什么都没写' }}</pre></div>
+        <hr/>
+        {% include 'messages.html' %}
+        <div class="form-group row">
+            <label class="col-3 text-right">昵称：</label>
+            <div class="col-9">{{ user.first_name}}</div>
+            <label class="col-3 text-right">邮箱：</label>
+            <div class="col-9">{{ user.email }}</div>
+            <label class="col-3 text-right">性别：</label>
+            <div class="col-9">{{ user_profile.get_gender_display }}</div>
+            <label class="col-3 text-right">出生日期：</label>
+            <div class="col-9">{{ user_profile.birth }}</div>
+            <label class="col-3 text-right">手机号码：</label>
+            <div class="col-9">{{ user_profile.mobile }}</div>
+            <label class="col-3 text-right">地址：</label>
+            <div class="col-9">{{ user_profile.address }}</div>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"></li>
-            <li class="list-group-item">性别：{{ userprofile.get_gender_display }}</li>
-            <li class="list-group-item">生日：{{ userprofile.birth|default_if_none:'-' }}</li>
-            <li class="list-group-item">手机号：{{ userprofile.mobile|default_if_none:'-' }}</li>
-            <li class="list-group-item">地址：{{ userprofile.address|default_if_none:'-' }}</li>
-        </ul>
-{#        <div class="card-footer">#}
-{#            <a href="#" class="card-link">保存</a>#}
-{#        </div>#}
+        <hr/>
+        <div class="d-flex">
+            <a href="{% url 'user:edit_profile' %}" class="ml-auto">
+                <button class="btn btn-link">编辑</button>
+            </a>
+        </div>
     </div>
 {% endblock %}
